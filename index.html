@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Color Dash — Fixed Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="topbar">
+    <div id="brand">Color Dash</div>
+    <div id="top-controls">
+      <button id="btn-play" class="btn">Play</button>
+      <button id="btn-editor" class="btn">Editor</button>
+      <button id="btn-skins" class="btn">Customize</button>
+      <button id="btn-settings" class="btn">Settings</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <canvas id="game" aria-label="game canvas"></canvas>
+
+    <aside id="side">
+      <div class="panel">
+        <div class="panel-title">HUD</div>
+        <div id="hud-distance">Distance: 0</div>
+        <div id="hud-high">High: 0</div>
+        <div style="height:8px"></div>
+        <button id="btn-music" class="btn small">Music: On</button>
+        <button id="btn-full" class="btn small">Fullscreen</button>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Active Cube</div>
+        <div id="skin-preview"></div>
+        <div id="skin-name"></div>
+      </div>
+    </aside>
+
+    <!-- Menu overlay -->
+    <div id="overlay" class="hidden" aria-hidden="true">
+      <div id="menuCard" role="dialog" aria-modal="true">
+        <h2 id="menuTitle">Menu</h2>
+        <div id="menuBody"></div>
+        <div id="menuActions">
+          <button id="menuClose" class="btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game over -->
+    <div id="gameOver" class="hidden" aria-hidden="true">
+      <div id="goCard" role="dialog" aria-modal="true">
+        <div id="goTitle">You crashed!</div>
+        <div id="goSub">Distance: <span id="goDist">0</span></div>
+        <div class="goButtons">
+          <button id="goRestart" class="btn">Retry</button>
+          <button id="goMenu" class="btn">Main Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Editor quick button -->
+    <button id="floatingEditor" class="floating-editor" title="Open Level Editor">Level Editor</button>
+
+    <!-- Editor panel -->
+    <div id="editorPanel" class="hidden" aria-hidden="true">
+      <div id="editorCard">
+        <h3>Level Editor</h3>
+
+        <div id="editorTools">
+          <label>Tool:
+            <select id="editTool">
+              <option value="block">Block</option>
+              <option value="spike">Spike</option>
+              <option value="gap">Gap</option>
+            </select>
+          </label>
+          <label>Width: <input id="editWidth" type="range" min="40" max="500" value="120"></label>
+          <label>Height: <input id="editHeight" type="range" min="20" max="300" value="80"></label>
+          <label>Color: <input id="editColor" type="color" value="#ff6b6b"></label>
+        </div>
+
+        <div id="editorMain">
+          <div id="editorTimeline" aria-label="timeline">Click timeline to add obstacle. Right-click to delete.</div>
+
+          <div id="editorPreviewWrapper">
+            <div class="panel-title">Preview</div>
+            <canvas id="previewCanvas" class="preview-canvas" aria-label="level preview"></canvas>
+          </div>
+        </div>
+
+        <div id="editorActions">
+          <input id="levelName" placeholder="Level name" />
+          <button id="saveLevel" class="btn">Save</button>
+          <button id="loadSample" class="btn">Load Sample</button>
+          <button id="exportLevel" class="btn">Export JSON</button>
+          <button id="closeEditor" class="btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      Controls: Space / ↑ / Click / Tap to jump.
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
