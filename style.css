@@ -1,0 +1,69 @@
+:root{
+  --bg-top:#071223;
+  --bg-bottom:#081a30;
+  --panel: rgba(255,255,255,0.04);
+  --muted: rgba(255,255,255,0.7);
+  --accent:#ff6b6b;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+html,body,#game{height:100%}
+body{
+  background: linear-gradient(180deg,var(--bg-top),var(--bg-bottom));
+  color:#eaf6ff;
+  overflow:hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Top bar */
+#topbar{
+  position:fixed;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;z-index:30;
+}
+#brand{font-weight:800;font-size:18px;background:linear-gradient(90deg,#ffd87b,#ff6b6b,#9b8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+#top-controls{display:flex;gap:8px}
+.btn{background:var(--panel);border:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:8px 12px;border-radius:10px;cursor:pointer}
+.btn.small{padding:6px 8px;font-size:13px}
+
+/* Layout */
+#main{position:relative;height:100vh;padding-top:64px;display:flex}
+#game{flex:1;display:block;width:100%;height:calc(100vh - 64px)}
+#side{width:220px;padding:16px;display:flex;flex-direction:column;gap:12px;z-index:20}
+.panel{background:var(--panel);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.panel-title{font-size:13px;color:var(--muted);margin-bottom:8px}
+#skin-preview{width:80px;height:80px;border-radius:12px;background:linear-gradient(180deg,#fff1 0%,#0000 60%);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+
+/* Overlay / menu */
+#overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:60;background:rgba(2,6,12,0.45)}
+#menuCard{position:relative;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);min-width:320px}
+.menu-customize{position:absolute;top:12px;right:12px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border-radius:8px;padding:6px 10px;border:1px solid rgba(255,255,255,0.05);cursor:pointer;color:var(--muted)}
+.hidden{display:none}
+
+/* Game over: ensure it's clickable and above overlay */
+#gameOver{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;pointer-events:auto;background:transparent}
+#goCard{background:rgba(5,8,13,0.95);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);text-align:center;pointer-events:auto}
+#goTitle{font-size:22px;color:var(--accent);font-weight:800;margin-bottom:8px}
+.goButtons{display:flex;gap:8px;justify-content:center;margin-top:12px}
+
+/* Floating editor */
+.floating-editor{position:fixed;right:14px;bottom:14px;z-index:80;background:var(--panel);padding:10px 12px;border-radius:12px;cursor:pointer;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+
+/* Editor */
+#editorPanel{position:fixed;inset:0;display:flex;align-items:flex-end;justify-content:center;z-index:70;padding:20px}
+#editorCard{width:100%;max-width:1100px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+#editorTools{display:flex;gap:10px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+#editorMain{display:flex;gap:12px;align-items:flex-start}
+#editorTimeline{flex:1;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));height:140px;border-radius:8px;border:1px dashed rgba(255,255,255,0.03);padding:8px;color:var(--muted)}
+#editorPreviewWrapper{width:320px;min-height:140px;background:var(--panel);padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+.preview-canvas{width:100%;height:120px;display:block;border-radius:6px;background:linear-gradient(180deg,#081426,#071323)}
+
+#editorActions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+
+#footer{position:fixed;left:0;right:0;bottom:8px;text-align:center;font-size:13px;color:var(--muted);z-index:20}
+
+/* Responsive */
+@media (max-width:900px){
+  #side{display:none}
+  #editorMain{flex-direction:column}
+  #editorPreviewWrapper{width:100%}
+  .floating-editor{right:8px;bottom:70px}
+}
